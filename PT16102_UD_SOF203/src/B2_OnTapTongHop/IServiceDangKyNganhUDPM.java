@@ -20,7 +20,7 @@ public interface IServiceDangKyNganhUDPM {
     boolean xoaSV(int indexSV);
 
     //Hàm Save File
-    boolean luuFileSV(List<SinhVien> lstSinhVien);
+    boolean luuFileSV();
 
     //Hàm Open File
     boolean moFileSV();

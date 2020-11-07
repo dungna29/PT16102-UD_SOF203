@@ -5,6 +5,9 @@
  */
 package B2_OnTapTongHop;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nguyen Anh Dung
@@ -16,12 +19,26 @@ public class Main extends javax.swing.JFrame {
     //Tât cả các biến toàn cục cần phải sử dụng gạch dưới khi đặt tên biến
     SinhVien _sv;//Khai báo 1 đối tượng sinh viên không cần khởi tạo
     //Khai báo những gì cần dùng chung hoặc lặp đi lặp lại thì khao báo ra bên ngoài và trên cùng
+    DefaultTableModel defaultTableModel;
 
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        loadTable();
+    }
+
+    void loadTable() {
+        if (_iServiceDangKyNganhUDPM.getListSinhVien().isEmpty()) {
+            return;
+        }
+        defaultTableModel = (DefaultTableModel) tbl_BangSinhVien.getModel();
+        defaultTableModel.setRowCount(0);
+        //_iServiceDangKyNganhUDPM.getListSinhVien() là 
+        for (SinhVien x : _iServiceDangKyNganhUDPM.getListSinhVien()) {
+            defaultTableModel.addRow(new Object[]{x.getMaSV(), x.getTen(), x.getNganh()});
+        }
     }
 
     /**
@@ -340,28 +357,63 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
+        //Trước khi thêm giá trị cho thuộc tính thì phải check lỗi trước
+
         _sv = new SinhVien();
-        _iServiceDangKyNganhUDPM.themSV(_sv);
+        _sv.setMaSV(txt_Msv.getText());
+        _sv.setTen(txt_Ten.getText());
+        _sv.setNganh(cbc_Nganh.getSelectedItem().toString());
+        System.out.println(_sv.toString());
+        if (_iServiceDangKyNganhUDPM.themSV(_sv)) {//Hàm thêm ở đây có kiểu trả về là True hoặc False
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            //Nếu thêm thành công thì List ở bên Service sẽ có dữ liệu
+            //Thêm dữ liệu vào trong bảng thông qua việc gọi Service ra sử dụng
+            loadTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+        }
+
     }//GEN-LAST:event_btn_AddActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
+        //_iServiceDangKyNganhUDPM.getIndexSV(txt_Msv.getText()) hàm này trả về 1 kiểu số nguyên và số nguyên là index hay còn gọi vị trí của đối tượng ở trong danh sách
+        int indexDoiTuongCanTim = _iServiceDangKyNganhUDPM.getIndexSV(txt_Msv.getText());
+        if (_iServiceDangKyNganhUDPM.xoaSV(indexDoiTuongCanTim)) {
+            System.out.println("Vị trí đối tượng cần xóalà: " + indexDoiTuongCanTim);
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            //Chỉ load lại danh sách khi xóa thành công
+            loadTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Xóa thất bại");
+        }
 
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void tbl_BangSinhVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_BangSinhVienMouseClicked
-
+        
     }//GEN-LAST:event_tbl_BangSinhVienMouseClicked
 
     private void btn_WriteFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_WriteFileActionPerformed
-
+        if (_iServiceDangKyNganhUDPM.luuFileSV()) {
+            JOptionPane.showMessageDialog(this, "Ghi file thành công");
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Ghi file thất bại");
     }//GEN-LAST:event_btn_WriteFileActionPerformed
 
     private void btn_ReadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReadFileActionPerformed
-
+        if (_iServiceDangKyNganhUDPM.moFileSV()) {
+            JOptionPane.showMessageDialog(this, "Mở thành công");
+            loadTable();
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Mở thất bại");
     }//GEN-LAST:event_btn_ReadFileActionPerformed
 
     private void btn_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ClearActionPerformed
-
+        txt_Msv.setText("");
+        txt_Ten.setText("");
+        cbc_Nganh.setSelectedIndex(0);
     }//GEN-LAST:event_btn_ClearActionPerformed
 
     private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
