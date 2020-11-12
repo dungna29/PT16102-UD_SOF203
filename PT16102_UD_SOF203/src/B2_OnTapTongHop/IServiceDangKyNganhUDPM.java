@@ -28,4 +28,5 @@ public interface IServiceDangKyNganhUDPM {
     List<SinhVien> getListSinhVien();//Hàm này sẽ trả ra 1 danh sách sinh viên
     
     int getIndexSV(String maSV);//Trả ra vị trí của đối tượng sinh viên cần tìm có trong List
+   
 }

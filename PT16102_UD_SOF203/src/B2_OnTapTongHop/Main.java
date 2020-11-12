@@ -358,7 +358,6 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
         //Trước khi thêm giá trị cho thuộc tính thì phải check lỗi trước
-
         _sv = new SinhVien();
         _sv.setMaSV(txt_Msv.getText());
         _sv.setTen(txt_Ten.getText());
@@ -372,7 +371,6 @@ public class Main extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
         }
-
     }//GEN-LAST:event_btn_AddActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
