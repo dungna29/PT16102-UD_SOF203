@@ -460,7 +460,7 @@ public class S1_TongHopControl_P1 extends javax.swing.JFrame {
         int i = JOptionPane.showConfirmDialog(null, "Muốn khởi động tiến trình không?", "Hỏi", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
             //Về thử Dùng Thread xem dùng được không
-            final Timer t = new Timer(50, new ActionListener() {
+            final Timer t = new Timer(50, new ActionListener() {//50 chính là thời gian giống như Sleep
                 public void actionPerformed(ActionEvent e) {                    
                     progressBar_PhanTram.setValue(progressBar_PhanTram.getValue() + 1);
                     lbl_PhanTram.setText(String.valueOf(progressBar_PhanTram.getValue())+"%");
