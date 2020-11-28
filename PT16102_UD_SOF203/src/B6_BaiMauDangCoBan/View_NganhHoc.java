@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package B5_ThucHanhTrenSwing;
+package B6_BaiMauDangCoBan;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -26,21 +26,6 @@ public class View_NganhHoc extends javax.swing.JFrame {
         initComponents();
         loadTable2();
     }
-//    void loadTable(){
-//        String[] headerTable = {"Mã Ngành", "Tên Ngành"};
-//        for (int i = 0; i < tbl_NganhHoc.getColumnCount(); i++) {
-//            TableColumn column = tbl_NganhHoc.getTableHeader().getColumnModel().getColumn(i);
-//            column.setHeaderValue(headerTable[i]);
-//        }
-//        
-//        DefaultTableModel defaultTableModel = (DefaultTableModel) tbl_NganhHoc.getModel();
-//        defaultTableModel.setColumnCount(0);
-//        
-//        List<NganhHoc> lstNganhHocs = _serviceNganhHoc.getLstNganhHoc();
-//        for (var x : lstNganhHocs) {
-//            defaultTableModel.addRow(new Object[]{x.getMaNganh(),x.getTenNganh()});
-//        }
-//    }
 
     void loadTable2() {
         if (_serviceNganhHoc.getLstNganhHoc().isEmpty()) {
@@ -48,7 +33,7 @@ public class View_NganhHoc extends javax.swing.JFrame {
         }
         _defaultTableModel = (DefaultTableModel) tbl_NganhHoc.getModel();
         _defaultTableModel.setRowCount(0);
-        //_iServiceDangKyNganhUDPM.getListSinhVien() là 
+       
         for (var x : _serviceNganhHoc.getLstNganhHoc()) {
             _defaultTableModel.addRow(new Object[]{x.getMaNganh(), x.getTenNganh()});
         }
@@ -329,6 +314,7 @@ public class View_NganhHoc extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(View_NganhHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

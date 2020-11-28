@@ -5,6 +5,7 @@
  */
 package B5_ThucHanhTrenSwing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,15 +13,27 @@ import java.util.List;
  * @author LegendNguyen
  */
 public class ServiceNganhHoc {
-    DAONganhHoc dAONganhHoc = new DAONganhHoc();
-    List<NganhHoc> lstNganhHoc;
+    DAONganhHoc _dAONganhHoc = new DAONganhHoc();
+    List<NganhHoc> _lstNganhHoc;
     public ServiceNganhHoc() {
-        lstNganhHoc = dAONganhHoc.getListNganhHocDB();
+      _lstNganhHoc = _dAONganhHoc.getListNganhHocDB();
     }
-    public static void main(String[] args) {
-        ServiceNganhHoc serviceNganhHoc = new ServiceNganhHoc();
-        for (var x : serviceNganhHoc.lstNganhHoc) {
-            System.out.println(x.toString());
+    
+    //Hàm lấy danh sách sinh viên
+    List<NganhHoc> getLstNganhHoc(){  
+        return _lstNganhHoc;
+    }
+    boolean addNganhHoc(NganhHoc nganhHoc){
+        if (nganhHoc == null) {
+            return false;
         }
+        _lstNganhHoc.add(nganhHoc); 
+        return true;
+        
+    }
+    boolean saveNganhHoc(){
+        _dAONganhHoc.insertNganhHocToDB(_lstNganhHoc);
+        _lstNganhHoc = new ArrayList<>();        
+        return true;
     }
 }
