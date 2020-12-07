@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package B6_BaiMauDangCoBan;
-
+package FinalAssignment;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,9 +15,8 @@ import java.util.logging.Logger;
  * @author LegendNguyen
  */
 public class DBConnection {
-
     static final String hostName = "127.0.0.1";
-    static final String dbName = "DUNGNA_JAVA3";
+    static final String dbName = "FINAL_ASIGNMENT_JAVA3";
     static final String userName = "dungna";
     static final String password = "12345678";
     static final String connectionURL
