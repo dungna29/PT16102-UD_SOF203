@@ -29,7 +29,7 @@ public class ServiceQuanLySinhVien {
 
     public ServiceQuanLySinhVien() {
         _serviceNganhHoc = new ServiceQuanLyNganhHoc();
-        _lstNganhHoc = _serviceNganhHoc.getLstNganhHoc();
+       _lstNganhHoc = _serviceNganhHoc.getLstNganhHoc();
         _lstSinhVien = getListSinhVienDB();
     }
 

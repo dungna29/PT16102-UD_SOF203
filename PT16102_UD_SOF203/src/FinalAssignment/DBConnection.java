@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package FinalAssignment;
-
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.logging.Level;
@@ -29,7 +29,7 @@ public class DBConnection {
 
     Connection openConnectionDB() {
         try {
-            //Bước 1:Load Driver
+            //Bước 1:Load Driver                   
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //Bước 2: Tạo kết nối Open Connection
             return DriverManager.getConnection(connectionURL, userName, password);

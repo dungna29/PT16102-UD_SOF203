@@ -17,21 +17,21 @@ import javax.swing.JPanel;
  */
 public class S3_TaoNutTuDong_SWING extends JFrame {
 
-    public S3_TaoNutTuDong_SWING() {
-        setTitle("My Flow Layout");
-        setLocation(200, 200);
-        setSize(400, 200);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JPanel p = new JPanel(); //Flow Layout
-         //JPanel p= new JPanel(new GridLayout(3, 3));
-        add(p);
-        JButton buttons[] = new JButton[15];
-        for (int i = 0; i < 15; i++) {
-            buttons[i] = new JButton("Button " + (i + 1));
-            p.add(buttons[i]);
-        }
-        setVisible(true);
+  public S3_TaoNutTuDong_SWING() {
+    setTitle("My Flow Layout");
+    setLocation(200, 200);
+    setSize(400, 200);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    JPanel p = new JPanel(); //Flow Layout
+    //JPanel p= new JPanel(new GridLayout(3, 3));
+    add(p);
+    JButton buttons[] = new JButton[15];
+    for (int i = 0; i < 15; i++) {
+      buttons[i] = new JButton("Button " + (i + 1));
+      p.add(buttons[i]);
     }
+    setVisible(true);
+  }
 //    public S3_TaoNutTuDong() {
 //        setTitle("My Flow Layout");
 //        setLocation(200, 200);
@@ -48,8 +48,8 @@ public class S3_TaoNutTuDong_SWING extends JFrame {
 //        setVisible(true);
 //    }
 
-    public static void main(String[] args) {
-        new S3_TaoNutTuDong_SWING();
-    }
+  public static void main(String[] args) {
+    new S3_TaoNutTuDong_SWING();
+  }
 
 }
